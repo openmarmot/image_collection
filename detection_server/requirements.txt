@@ -1,0 +1,14 @@
+# Core web framework
+Flask
+
+# Ultralytics YOLO (includes torch + torchvision automatically)
+ultralytics
+
+# Image handling
+Pillow
+
+# OpenCV for image processing (used for .plot())
+opencv-python
+
+# Optional: Use headless version on servers (no GUI dependencies)
+# opencv-python-headless
