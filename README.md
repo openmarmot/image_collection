@@ -10,3 +10,5 @@ Nvidia GPU recommended. I tested it on a Nvidia DGX Spark.
 
 - **Web UI**: Visit `http://localhost:5000` to upload images and view detections
 - **API**: POST to `http://localhost:5000/upload` with an image file
+
+![screenshot](/screenshots/detection_server.png "detection_server")
