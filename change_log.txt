@@ -1,0 +1,6 @@
+image_collection change log
+
+-----------------------
+june 14 2026
+- minor updates to the detection server
+- pinned versions for requirements.txt
