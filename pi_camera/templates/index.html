@@ -38,8 +38,8 @@
                 const response = await fetch('/capture_image');
                 if (!response.ok) throw new Error('Capture failed');
                 const blob = await response.blob();
-                const url = URL.createObjectURL(blob);
-                container.innerHTML = `<img src="${url}" alt="Captured image">`;
+                const urlObj = URL.createObjectURL(blob);
+                container.innerHTML = `<img src="${urlObj}" alt="Captured image">`;
             } catch (err) {
                 container.innerHTML = `<p style="color:red;">Error: ${err.message}</p>`;
             } finally {

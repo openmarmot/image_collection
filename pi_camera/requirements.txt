@@ -1,3 +1,5 @@
 Flask==3.1.3
 Pillow==12.3.0
 picamera2==0.3.36
+# System deps (install on Pi via apt):
+#   sudo apt-get install -y libcap-dev python3-libcamera python3-kms++

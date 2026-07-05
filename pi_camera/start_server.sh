@@ -1,6 +1,10 @@
 #!/bin/bash
 # Script to set up a Python virtual environment and run the Pi Camera server
 
+# Stop desktop media services that grab the camera
+systemctl --user disable --now pipewire.socket pipewire-pulse.socket 2>/dev/null
+systemctl --user stop pipewire wireplumber 2>/dev/null
+
 # Define the virtual environment directory
 VENV_DIR="venv"
 
@@ -13,7 +17,7 @@ fi
 # Create a virtual environment if it doesn't exist
 if [ ! -d "$VENV_DIR" ]; then
     echo "Creating virtual environment in $VENV_DIR..."
-    python3 -m venv $VENV_DIR
+    python3 -m venv --system-site-packages $VENV_DIR
 else
     echo "Virtual environment already exists in $VENV_DIR."
 fi
