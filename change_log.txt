@@ -1,6 +1,10 @@
 image_collection change log
 
 -----------------------
+july 04 2026
+- added a basic pi_camera app
+
+-----------------------
 june 14 2026
 - minor updates to the detection server
 - pinned versions for requirements.txt

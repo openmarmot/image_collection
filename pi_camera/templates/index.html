@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pi Camera</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f8f9fa; }
+        .container { max-width: 1100px; margin: 0 auto; text-align: center; }
+        h1 { color: #333; }
+        .camera-box { padding: 30px; border: 3px dashed #28a745; border-radius: 15px; background: white; }
+        img { max-width: 100%; height: auto; border: 2px solid #ddd; border-radius: 10px; margin: 15px 0; }
+        button { padding: 16px 40px; font-size: 20px; cursor: pointer; background: #28a745; color: white; border: none; border-radius: 8px; }
+        button:hover { background: #218838; }
+        button:disabled { background: #6c757d; cursor: not-allowed; }
+        .spinner { display: none; margin: 20px auto; border: 4px solid #f3f3f3; border-top: 4px solid #28a745; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pi Camera</h1>
+        <div class="camera-box">
+            <button id="captureBtn" onclick="capture()">Take Picture</button>
+            <div class="spinner" id="spinner"></div>
+            <div id="imageContainer"></div>
+        </div>
+    </div>
+    <script>
+        async function capture() {
+            const btn = document.getElementById('captureBtn');
+            const spinner = document.getElementById('spinner');
+            const container = document.getElementById('imageContainer');
+            btn.disabled = true;
+            spinner.style.display = 'block';
+            container.innerHTML = '';
+            try {
+                const response = await fetch('/capture_image');
+                if (!response.ok) throw new Error('Capture failed');
+                const blob = await response.blob();
+                const url = URL.createObjectURL(blob);
+                container.innerHTML = `<img src="${url}" alt="Captured image">`;
+            } catch (err) {
+                container.innerHTML = `<p style="color:red;">Error: ${err.message}</p>`;
+            } finally {
+                btn.disabled = false;
+                spinner.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

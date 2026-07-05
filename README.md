@@ -12,3 +12,11 @@ Nvidia GPU recommended. I tested it on a Nvidia DGX Spark.
 - **API**: POST to `http://localhost:5000/upload` with an image file
 
 ![screenshot](/screenshots/detection_server.png "detection_server")
+
+## Pi Camera
+
+A Flask-based Raspberry Pi camera server using `picamera2`.
+Tested on a Raspberry Pi 5.
+
+- **Web UI**: Visit `http://localhost:8008` to view and capture images
+- **API**: GET `http://localhost:8008/capture_image` returns a JPEG
