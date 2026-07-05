@@ -1,0 +1,2 @@
+This is a simply python program to get a image from the pi_camera and send it to a openai compatible multimodal LLM to get a description.
+For the LLM - I am currently using llama.cpp and google gemma27b.
